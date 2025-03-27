@@ -41,6 +41,7 @@ The program known as "run.py" is responsible for implementing the alphaMixLoss, 
 <center>
     Fig.2 The process of the Namdm
 </center>
+
 ## 📊 Benchmark Performance
 
 ![image-20250327215234019](pic/image-20250327215234019.png)
