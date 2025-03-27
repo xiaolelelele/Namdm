@@ -14,7 +14,7 @@ Official implementation of the neural architecture search framework presented in
 
 The program known as "run.py" is responsible for implementing the alphaMixLoss, a novel hybrid loss function that was proposed in the aforementioned paper. The shape of the alphaMixLoss loss function is determined by the hyperparameter α, and the value of the hyperparameter α can be determined by the Bayesian optimization algorithm. By learning the hyperparameter α, the strength of the penalty for outliers is balanced against the performance degradation caused by outliers being amplified (especially outliers larger than one).
 
-![image-20250327212043397](pic/image-20250327212043397.png)
+![image-20250327212043397](pic/1743086078280.jpg)
 
 <center>
     Fig.1 The loss function of the alphaMixLoss
@@ -36,15 +36,16 @@ The program known as "run.py" is responsible for implementing the alphaMixLoss, 
 
 + Step 4: The results are evaluated and analyzed to provide technical guidance for the actual production process.
 
-![image-20250327215406501](pic/image-20250327215406501.png)
+![image-20250327215406501](pic/Namdm.png)
 
 <center>
     Fig.2 The process of the Namdm
 </center>
 
+
 ## 📊 Benchmark Performance
 
-![image-20250327215234019](pic/image-20250327215234019.png)
+![image-20250327215234019](pic/Figure_1.png)
 
 <center>
     Fig.3 Performance(MSE, MAE, MAPE, RMSE, R2) of baseline models and different optimization Methods in the Ethylene production process
