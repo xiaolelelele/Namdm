@@ -12,7 +12,7 @@ Official implementation of the neural architecture search framework presented in
 
 ## 📜AlphaMixLoss
 
-The program known as "run.py" is responsible for implementing the alphaMixLoss, a novel hybrid loss function that was proposed in the aforementioned paper. The shape of the alphaMixLoss loss function is determined by the hyperparameter α, and the value of the hyperparameter α can be determined by the Bayesian optimization algorithm. By learning the hyperparameter α, the strength of the penalty for outliers is balanced against the performance degradation caused by outliers being amplified (especially outliers larger than one).
+The script named "run.py" is tasked with implementing the alphaMixLoss, a brand - new hybrid loss function put forward in the previously mentioned paper. The form of the alphaMixLoss loss function is governed by the hyperparameter α, and the value of this hyperparameter α can be ascertained via the Bayesian optimization algorithm. Through the learning process of the hyperparameter α, a balance is struck between the penalty intensity for outliers and the performance decline that results from the amplification of outliers (specifically, outliers greater than one).
 
 ![image-20250327212043397](pic/1743086078280.jpg)
 
@@ -23,18 +23,12 @@ The program known as "run.py" is responsible for implementing the alphaMixLoss, 
 
 ## 🔖Namdm
 
- The main steps of the Namdm proposed are as follows.
-
-+ Step 1: Collect the actual production dataset and categorize it into training set and test set as input to the neural network.
-
-+ Step 2: Construct the loss function MixLoss as shown in Equation that can balance the penalty strength of outliers and the performance degradation problem of the Namdm. Meanwhile, the number of hidden layer nodes, the number of iterations, the batch size and the parameter α in the αMixLoss loss function are optimized to achieve the global optimum of the Namdm. 
-  $$
-  \alpha Mix Loss = \alpha \cdot \mathrm{MSE} + (1 - \alpha) \cdot \mathrm{Log\_Cosh}
-  $$
-
-+ Step 3: Apply the Namdm method for optimization of different neural networks and compare it with existing optimization methods. The evaluation criteria are based on MSE and time to verify the superiority of the automatic modeling optimization method.  
-
-+ Step 4: The results are evaluated and analyzed to provide technical guidance for the actual production process.
+The proposed Namdm follows these principal steps:
+Step 1: Gather the real - world production dataset. Then, classify it into a training set and a test set, which will serve as the input for the neural network.
+Step 2: Formulate the loss function MixLoss as presented in the following equation. This function is designed to strike a balance between the penalty intensity for outliers and the performance deterioration issue of the Namdm. Additionally, optimize the number of hidden - layer nodes, the iteration count, the batch size, and the parameter α in the αMixLoss loss function. The aim is to reach the global optimum of the Namdm.
+αMixLoss=α⋅MSE+(1−α)⋅Log_Cosh
+Step 3: Employ the Namdm approach to optimize various neural networks. Subsequently, compare it with pre - existing optimization techniques. The evaluation is carried out using Mean Squared Error (MSE) and time as criteria, with the goal of validating the superiority of this automatic - modeling optimization method.
+Step 4: Evaluate and analyze the outcomes. The insights obtained will offer technical direction for the actual production process.
 
 ![image-20250327215406501](pic/Namdm.png)
 
