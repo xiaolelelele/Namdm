@@ -1,6 +1,6 @@
 # Namdm
 
-Official implementation of the neural architecture search framework presented in:  **"Novel Neural Network Automation Design Method for Energy Saving and Carbon Emission Reducing of Petrochemical Production Processes"**
+Official implementation of the Namdm
 
 ## 🚀 Key Features
 
