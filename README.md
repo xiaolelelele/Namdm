@@ -56,10 +56,84 @@ conda install pytorch==1.12.1 torchvision==0.13.1 -c pytorch
 pip install -r requirements.txt
 ```
 
+## 🏭 LlamaFactory Integration
+
+Namdm now includes **LlamaFactory** - a unified model factory pattern for creating and training different neural network architectures.
+
+### Key Features
+
+- **Unified Model Creation**: Create any model architecture with a simple factory interface
+- **Configuration-Based Training**: Use JSON configs for reproducible experiments
+- **Model Comparison**: Easily compare different architectures
+- **Extensible Design**: Register custom models easily
+
+### Quick Start with LlamaFactory
+
+```python
+from llamafactory import LlamaFactory, ModelFactory
+
+# List available models
+factory = LlamaFactory()
+print(factory.list_available_models())
+# Output: ['amgru', 'amlstm', 'bilstm', 'gru', 'lstm']
+
+# Create a model
+model = factory.create_model('amgru', input_dim=10, hidden_dim=32)
+
+# Or use ModelFactory directly
+model = ModelFactory.create_model('lstm', input_dim=10, hidden_dim=16)
+```
+
+### Training with LlamaFactory
+
+```bash
+# Train with command line arguments
+python train_llamafactory.py --model amgru --input_dim 10 --hidden_dim 32
+
+# Train with configuration file
+python train_llamafactory.py --config config_example.json
+
+# List available models
+python train_llamafactory.py --list_models
+```
+
+### Integration with Existing Pipeline
+
+```bash
+# Train using LlamaFactory with Bayesian optimization
+python run_llamafactory.py --model lstm --file_path yixi.csv
+
+# Compare all models
+python run_llamafactory.py --compare --init_points 3 --n_iter 5
+```
+
+### Configuration Example
+
+```json
+{
+  "model_name": "amgru",
+  "model_config": {
+    "input_dim": 10,
+    "hidden_dim": 32
+  },
+  "training_config": {
+    "epochs": 500,
+    "batch_size": 32,
+    "learning_rate": 0.0005
+  }
+}
+```
+
+See `config_example.json` for a complete configuration template.
+
 ## 🧪 run
 
 ```bash
+# Original training script
 python run.py
+
+# With LlamaFactory integration
+python run_llamafactory.py --model amgru
 ```
 
 ## 🤝 Contributing
