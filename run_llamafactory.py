@@ -31,7 +31,7 @@ class Train_OPT_LlamaFactory:
         
         print(f"\n=== Using LlamaFactory ===")
         print(f"Selected model: {model_name}")
-        print(f"Available models: {', '.join(self.factory.list_available_models())}")
+        print(f"Available models: {', '.join(ModelFactory.list_models())}")
         
     def train_test(self, delta: float, hidden: float, epoch: float, batch: float) -> float:
         """Train and test model using LlamaFactory"""

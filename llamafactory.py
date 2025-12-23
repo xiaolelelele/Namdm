@@ -24,6 +24,15 @@ class ModelFactory:
         'lstm': LSTMModel,
     }
     
+    # Parameter mapping for models with different parameter names
+    _param_mapping: Dict[str, Dict[str, str]] = {
+        'amgru': {'input_dim': 'input_size', 'hidden_dim': 'hidden_size'},
+        'amlstm': {'input_dim': 'input_size', 'hidden_dim': 'hidden_size'},
+        'bilstm': {'input_dim': 'input_dim', 'hidden_dim': 'hidden_dim'},
+        'gru': {'input_dim': 'input_dim', 'hidden_dim': 'hidden_dim'},
+        'lstm': {'input_dim': 'input_dim', 'hidden_dim': 'hidden_dim'},
+    }
+    
     @classmethod
     def create_model(cls, model_name: str, input_dim: int, hidden_dim: int, **kwargs) -> nn.Module:
         """
@@ -50,13 +59,16 @@ class ModelFactory:
             )
         
         model_class = cls._models[model_name]
+        param_map = cls._param_mapping.get(model_name, {})
         
-        # Handle different parameter names for different models
-        # AMGRU and AMLSTM use input_size instead of input_dim
-        if model_name in ['amgru', 'amlstm']:
-            return model_class(input_size=input_dim, hidden_size=hidden_dim, **kwargs)
-        else:
-            return model_class(input_dim=input_dim, hidden_dim=hidden_dim, **kwargs)
+        # Map parameters according to model-specific naming
+        params = {
+            param_map.get('input_dim', 'input_dim'): input_dim,
+            param_map.get('hidden_dim', 'hidden_dim'): hidden_dim
+        }
+        params.update(kwargs)
+        
+        return model_class(**params)
     
     @classmethod
     def register_model(cls, name: str, model_class: Type[nn.Module]) -> None:

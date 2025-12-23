@@ -99,7 +99,11 @@ def train_with_llamafactory(
             'learning_rate': learning_rate
         }
     }
-    config.update(kwargs)
+    
+    # Merge additional kwargs into appropriate sections
+    for key, value in kwargs.items():
+        if key.endswith('_config'):
+            config[key] = value
     
     return train_model_from_config(config_dict=config)
 
