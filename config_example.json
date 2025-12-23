@@ -1,0 +1,39 @@
+{
+  "model_name": "amgru",
+  "model_config": {
+    "input_dim": 10,
+    "hidden_dim": 32
+  },
+  "training_config": {
+    "epochs": 500,
+    "batch_size": 32,
+    "learning_rate": 0.0005,
+    "optimizer": "adam",
+    "loss_function": "deltamix",
+    "delta": 0.5
+  },
+  "data_config": {
+    "file_path": "yixi.csv",
+    "timesteps": 10,
+    "train_split": 0.8,
+    "shuffle_data": true,
+    "normalize": true
+  },
+  "optimization_config": {
+    "use_bayesian_optimization": true,
+    "init_points": 5,
+    "n_iter": 25,
+    "pbounds": {
+      "delta": [0, 1],
+      "hidden": [3, 32],
+      "epoch": [300, 600],
+      "batch": [4, 64]
+    }
+  },
+  "logging_config": {
+    "log_dir": "logs",
+    "log_interval": 50,
+    "save_model": true,
+    "model_save_path": "checkpoints"
+  }
+}
